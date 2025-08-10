@@ -280,16 +280,4 @@ docker-compose up -d
 kubectl apply -f k8s/
 ```
 
-## 📞 Support & Contact
 
-For questions about this assessment project:
-- **LinkedIn**: [Suresh Badavath](https://www.linkedin.com/in/sureshbadavath/)
-- **GitHub Issues**: Create an issue in this repository
-
-## 📄 License
-
-This project is created for assessment purposes. All data sources are used in compliance with their respective terms of service and robots.txt files.
-
----
-
-**Built with ❤️ for the Data Engineer Assessment - Singapore Company Database Creation**
