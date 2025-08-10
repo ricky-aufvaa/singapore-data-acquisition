@@ -1,0 +1,189 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: singapore_companies_db
+    environment:
+      POSTGRES_DB: singapore_companies
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: singapore_db_2024
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./schema:/docker-entrypoint-initdb.d
+    networks:
+      - singapore_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d singapore_companies"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: singapore_companies_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - singapore_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Ollama for LLM processing
+  ollama:
+    image: ollama/ollama:latest
+    container_name: singapore_companies_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - singapore_network
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    # For CPU-only deployment, comment out the deploy section above
+
+  # ETL Pipeline Application
+  singapore_etl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: singapore_companies_etl
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=singapore_companies
+      - DB_USER=postgres
+      - DB_PASSWORD=singapore_db_2024
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_MODEL=llama3:8b
+      - LOG_LEVEL=INFO
+      - ENABLE_STRUCTURED_LOGGING=true
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+    networks:
+      - singapore_network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+    command: ["python", "src/main.py", "--health-check"]
+
+  # Monitoring with Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: singapore_companies_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - singapore_network
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+
+  # Grafana for visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: singapore_companies_grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=singapore_admin_2024
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - singapore_network
+    depends_on:
+      - prometheus
+
+  # Jupyter Notebook for analysis
+  jupyter:
+    image: jupyter/datascience-notebook:latest
+    container_name: singapore_companies_jupyter
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=singapore_jupyter_2024
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ./data:/home/jovyan/work/data
+    networks:
+      - singapore_network
+    depends_on:
+      - postgres
+
+  # pgAdmin for database management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: singapore_companies_pgadmin
+    ports:
+      - "5050:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@singapore-companies.com
+      - PGADMIN_DEFAULT_PASSWORD=singapore_admin_2024
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - singapore_network
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  ollama_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  singapore_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
