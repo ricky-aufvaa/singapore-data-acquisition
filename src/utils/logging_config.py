@@ -185,7 +185,7 @@ def setup_logging() -> None:
             level=settings.logging.level,
             format="{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name}:{function}:{line} - {message}",
             rotation=settings.logging.max_file_size,
-            retention=f"{settings.logging.backup_count} files",
+            retention=settings.logging.backup_count,
             compression="zip"
         )
     

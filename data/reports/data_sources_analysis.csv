@@ -1,0 +1,14 @@
+name,url,source_type,access_method,estimated_coverage,data_types,reliability_score,legal_status,robots_txt_compliant,rate_limits,api_key_required,cost,notes
+ACRA Business Registry,https://www.acra.gov.sg,official,hybrid,500000,"['uen', 'company_name', 'registration_date', 'status', 'industry']",0.95,compliant,False,,False,Free,Primary source for UEN and official company data
+SGX Listed Companies,https://www.sgx.com,financial,api,700,"['stock_code', 'market_cap', 'financial_data', 'annual_reports']",0.9,compliant,True,,True,Free,
+GeBIZ Government Tenders,https://www.gebiz.gov.sg,procurement,scraping,10000,"['vendor_info', 'contract_awards', 'business_capability']",0.8,compliant,True,,False,Free,
+Yellow Pages Singapore,https://www.yellowpages.com.sg,directory,scraping,100000,"['contact_info', 'address', 'category', 'website']",0.75,requires_review,False,Moderate rate limiting required,False,Free,
+Singapore Business Directory,https://www.sgbusinessdirectory.com,directory,scraping,50000,"['company_profiles', 'contact_details', 'services']",0.7,requires_review,True,,False,Free,
+Kompass Singapore,https://sg.kompass.com,directory,scraping,30000,"['company_details', 'products', 'trade_data']",0.75,requires_review,False,,False,Free,
+LinkedIn Company Pages,https://www.linkedin.com,social,api,50000,"['employee_count', 'industry', 'company_size', 'updates']",0.85,requires_review,True,Strict API limits,True,Free,
+Facebook Business Pages,https://www.facebook.com,social,api,25000,"['page_info', 'contact_details', 'reviews']",0.7,requires_review,True,,True,Free,
+Crunchbase,https://www.crunchbase.com,financial,api,5000,"['funding_data', 'investor_info', 'startup_profiles']",0.85,compliant,True,,True,Paid API,
+AngelList (Wellfound),https://wellfound.com,financial,scraping,3000,"['startup_jobs', 'company_profiles', 'funding_status']",0.75,requires_review,False,,False,Free,
+FinTech Singapore Directory,https://fintechsingapore.org,directory,scraping,500,"['fintech_companies', 'services', 'partnerships']",0.8,compliant,False,,False,Free,
+Singapore Manufacturing Federation,https://www.smfederation.org.sg,directory,scraping,2000,"['manufacturing_companies', 'capabilities', 'certifications']",0.8,compliant,False,,False,Free,
+Company Websites,Various,primary,scraping,200000,"['about_us', 'products', 'services', 'contact', 'team_size']",0.75,requires_review,False,,False,Free,Individual website scraping based on discovered URLs

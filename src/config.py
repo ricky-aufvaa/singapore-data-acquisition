@@ -5,7 +5,8 @@ Handles environment variables, database connections, and application settings
 
 import os
 from typing import List, Optional
-from pydantic import BaseSettings, Field, validator
+from pydantic_settings import BaseSettings
+from pydantic import Field, validator
 from pydantic_settings import SettingsConfigDict
 
 
@@ -18,7 +19,7 @@ class DatabaseConfig(BaseSettings):
     port: int = Field(default=5432, description="Database port")
     name: str = Field(default="singapore_companies", description="Database name")
     user: str = Field(default="postgres", description="Database user")
-    password: str = Field(description="Database password")
+    password: str = Field(default="firmable123", description="Database password")
     
     @property
     def url(self) -> str:
@@ -170,7 +171,8 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file='.env',
         env_file_encoding='utf-8',
-        case_sensitive=False
+        case_sensitive=False,
+        extra='ignore'  # Allow extra fields from .env file
     )
     
     # Application settings

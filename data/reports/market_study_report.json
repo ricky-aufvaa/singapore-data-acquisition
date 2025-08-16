@@ -1,0 +1,659 @@
+{
+  "study_date": "2025-08-15T18:09:05.638239",
+  "total_sources_analyzed": 13,
+  "data_sources": [
+    {
+      "name": "ACRA Business Registry",
+      "url": "https://www.acra.gov.sg",
+      "source_type": "official",
+      "access_method": "hybrid",
+      "estimated_coverage": 500000,
+      "data_types": [
+        "uen",
+        "company_name",
+        "registration_date",
+        "status",
+        "industry"
+      ],
+      "reliability_score": 0.95,
+      "legal_status": "compliant",
+      "robots_txt_compliant": false,
+      "rate_limits": null,
+      "api_key_required": false,
+      "cost": "Free",
+      "notes": "Primary source for UEN and official company data"
+    },
+    {
+      "name": "SGX Listed Companies",
+      "url": "https://www.sgx.com",
+      "source_type": "financial",
+      "access_method": "api",
+      "estimated_coverage": 700,
+      "data_types": [
+        "stock_code",
+        "market_cap",
+        "financial_data",
+        "annual_reports"
+      ],
+      "reliability_score": 0.9,
+      "legal_status": "compliant",
+      "robots_txt_compliant": true,
+      "rate_limits": null,
+      "api_key_required": true,
+      "cost": "Free",
+      "notes": ""
+    },
+    {
+      "name": "GeBIZ Government Tenders",
+      "url": "https://www.gebiz.gov.sg",
+      "source_type": "procurement",
+      "access_method": "scraping",
+      "estimated_coverage": 10000,
+      "data_types": [
+        "vendor_info",
+        "contract_awards",
+        "business_capability"
+      ],
+      "reliability_score": 0.8,
+      "legal_status": "compliant",
+      "robots_txt_compliant": true,
+      "rate_limits": null,
+      "api_key_required": false,
+      "cost": "Free",
+      "notes": ""
+    },
+    {
+      "name": "Yellow Pages Singapore",
+      "url": "https://www.yellowpages.com.sg",
+      "source_type": "directory",
+      "access_method": "scraping",
+      "estimated_coverage": 100000,
+      "data_types": [
+        "contact_info",
+        "address",
+        "category",
+        "website"
+      ],
+      "reliability_score": 0.75,
+      "legal_status": "requires_review",
+      "robots_txt_compliant": false,
+      "rate_limits": "Moderate rate limiting required",
+      "api_key_required": false,
+      "cost": "Free",
+      "notes": ""
+    },
+    {
+      "name": "Singapore Business Directory",
+      "url": "https://www.sgbusinessdirectory.com",
+      "source_type": "directory",
+      "access_method": "scraping",
+      "estimated_coverage": 50000,
+      "data_types": [
+        "company_profiles",
+        "contact_details",
+        "services"
+      ],
+      "reliability_score": 0.7,
+      "legal_status": "requires_review",
+      "robots_txt_compliant": true,
+      "rate_limits": null,
+      "api_key_required": false,
+      "cost": "Free",
+      "notes": ""
+    },
+    {
+      "name": "Kompass Singapore",
+      "url": "https://sg.kompass.com",
+      "source_type": "directory",
+      "access_method": "scraping",
+      "estimated_coverage": 30000,
+      "data_types": [
+        "company_details",
+        "products",
+        "trade_data"
+      ],
+      "reliability_score": 0.75,
+      "legal_status": "requires_review",
+      "robots_txt_compliant": false,
+      "rate_limits": null,
+      "api_key_required": false,
+      "cost": "Free",
+      "notes": ""
+    },
+    {
+      "name": "LinkedIn Company Pages",
+      "url": "https://www.linkedin.com",
+      "source_type": "social",
+      "access_method": "api",
+      "estimated_coverage": 50000,
+      "data_types": [
+        "employee_count",
+        "industry",
+        "company_size",
+        "updates"
+      ],
+      "reliability_score": 0.85,
+      "legal_status": "requires_review",
+      "robots_txt_compliant": true,
+      "rate_limits": "Strict API limits",
+      "api_key_required": true,
+      "cost": "Free",
+      "notes": ""
+    },
+    {
+      "name": "Facebook Business Pages",
+      "url": "https://www.facebook.com",
+      "source_type": "social",
+      "access_method": "api",
+      "estimated_coverage": 25000,
+      "data_types": [
+        "page_info",
+        "contact_details",
+        "reviews"
+      ],
+      "reliability_score": 0.7,
+      "legal_status": "requires_review",
+      "robots_txt_compliant": true,
+      "rate_limits": null,
+      "api_key_required": true,
+      "cost": "Free",
+      "notes": ""
+    },
+    {
+      "name": "Crunchbase",
+      "url": "https://www.crunchbase.com",
+      "source_type": "financial",
+      "access_method": "api",
+      "estimated_coverage": 5000,
+      "data_types": [
+        "funding_data",
+        "investor_info",
+        "startup_profiles"
+      ],
+      "reliability_score": 0.85,
+      "legal_status": "compliant",
+      "robots_txt_compliant": true,
+      "rate_limits": null,
+      "api_key_required": true,
+      "cost": "Paid API",
+      "notes": ""
+    },
+    {
+      "name": "AngelList (Wellfound)",
+      "url": "https://wellfound.com",
+      "source_type": "financial",
+      "access_method": "scraping",
+      "estimated_coverage": 3000,
+      "data_types": [
+        "startup_jobs",
+        "company_profiles",
+        "funding_status"
+      ],
+      "reliability_score": 0.75,
+      "legal_status": "requires_review",
+      "robots_txt_compliant": false,
+      "rate_limits": null,
+      "api_key_required": false,
+      "cost": "Free",
+      "notes": ""
+    },
+    {
+      "name": "FinTech Singapore Directory",
+      "url": "https://fintechsingapore.org",
+      "source_type": "directory",
+      "access_method": "scraping",
+      "estimated_coverage": 500,
+      "data_types": [
+        "fintech_companies",
+        "services",
+        "partnerships"
+      ],
+      "reliability_score": 0.8,
+      "legal_status": "compliant",
+      "robots_txt_compliant": false,
+      "rate_limits": null,
+      "api_key_required": false,
+      "cost": "Free",
+      "notes": ""
+    },
+    {
+      "name": "Singapore Manufacturing Federation",
+      "url": "https://www.smfederation.org.sg",
+      "source_type": "directory",
+      "access_method": "scraping",
+      "estimated_coverage": 2000,
+      "data_types": [
+        "manufacturing_companies",
+        "capabilities",
+        "certifications"
+      ],
+      "reliability_score": 0.8,
+      "legal_status": "compliant",
+      "robots_txt_compliant": false,
+      "rate_limits": null,
+      "api_key_required": false,
+      "cost": "Free",
+      "notes": ""
+    },
+    {
+      "name": "Company Websites",
+      "url": "Various",
+      "source_type": "primary",
+      "access_method": "scraping",
+      "estimated_coverage": 200000,
+      "data_types": [
+        "about_us",
+        "products",
+        "services",
+        "contact",
+        "team_size"
+      ],
+      "reliability_score": 0.75,
+      "legal_status": "requires_review",
+      "robots_txt_compliant": false,
+      "rate_limits": null,
+      "api_key_required": false,
+      "cost": "Free",
+      "notes": "Individual website scraping based on discovered URLs"
+    }
+  ],
+  "source_analysis": {
+    "ACRA Business Registry": {
+      "accessibility": "accessible",
+      "robots_txt_status": "no_robots_txt",
+      "response_time": 1.797670602798462,
+      "content_structure": {
+        "has_search_functionality": false,
+        "pagination_detected": true,
+        "company_listings_detected": 0,
+        "contact_info_patterns": 6,
+        "structured_data": false,
+        "estimated_scrapability": "low"
+      },
+      "estimated_records": 500000,
+      "data_freshness": "unknown",
+      "technical_challenges": [],
+      "opportunities": [
+        "Official UEN registry - highest data quality",
+        "Comprehensive coverage of all registered entities",
+        "Regular updates and reliable data"
+      ],
+      "challenges": [
+        "May require manual search or API access",
+        "Rate limiting on bulk queries"
+      ],
+      "recommended_approach": "Hybrid: API where available, targeted scraping for bulk data",
+      "priority_level": "high"
+    },
+    "SGX Listed Companies": {
+      "accessibility": "accessible",
+      "robots_txt_status": "unknown",
+      "response_time": 0.3250751495361328,
+      "content_structure": "unknown",
+      "estimated_records": 700,
+      "data_freshness": "unknown",
+      "technical_challenges": [],
+      "opportunities": [],
+      "challenges": [],
+      "recommended_approach": "",
+      "priority_level": "medium"
+    },
+    "GeBIZ Government Tenders": {
+      "accessibility": "accessible",
+      "robots_txt_status": "compliant",
+      "response_time": 0.2904517650604248,
+      "content_structure": {
+        "has_search_functionality": false,
+        "pagination_detected": false,
+        "company_listings_detected": 0,
+        "contact_info_patterns": 0,
+        "structured_data": false,
+        "estimated_scrapability": "low"
+      },
+      "estimated_records": 10000,
+      "data_freshness": "unknown",
+      "technical_challenges": [],
+      "opportunities": [],
+      "challenges": [],
+      "recommended_approach": "",
+      "priority_level": "medium"
+    },
+    "Yellow Pages Singapore": {
+      "accessibility": "accessible",
+      "robots_txt_status": "restricted",
+      "response_time": 0.20656514167785645,
+      "content_structure": {
+        "has_search_functionality": true,
+        "pagination_detected": true,
+        "company_listings_detected": 3,
+        "contact_info_patterns": 10,
+        "structured_data": true,
+        "estimated_scrapability": "medium"
+      },
+      "estimated_records": 100000,
+      "data_freshness": "unknown",
+      "technical_challenges": [],
+      "opportunities": [
+        "Large volume of company listings",
+        "Contact information available",
+        "Industry categorization"
+      ],
+      "challenges": [
+        "Data quality varies",
+        "May have duplicate entries",
+        "Requires respectful scraping"
+      ],
+      "recommended_approach": "Systematic scraping with deduplication",
+      "priority_level": "medium"
+    },
+    "Singapore Business Directory": {
+      "accessibility": "accessible",
+      "robots_txt_status": "compliant",
+      "response_time": 0.30753612518310547,
+      "content_structure": {
+        "has_search_functionality": false,
+        "pagination_detected": true,
+        "company_listings_detected": 0,
+        "contact_info_patterns": 1,
+        "structured_data": false,
+        "estimated_scrapability": "low"
+      },
+      "estimated_records": 50000,
+      "data_freshness": "unknown",
+      "technical_challenges": [],
+      "opportunities": [
+        "Large volume of company listings",
+        "Contact information available",
+        "Industry categorization"
+      ],
+      "challenges": [
+        "Data quality varies",
+        "May have duplicate entries",
+        "Requires respectful scraping"
+      ],
+      "recommended_approach": "Systematic scraping with deduplication",
+      "priority_level": "medium"
+    },
+    "Kompass Singapore": {
+      "accessibility": "inaccessible",
+      "robots_txt_status": "restricted",
+      "response_time": 0.2599012851715088,
+      "content_structure": "unknown",
+      "estimated_records": 30000,
+      "data_freshness": "unknown",
+      "technical_challenges": [
+        "URL not accessible"
+      ],
+      "opportunities": [
+        "Large volume of company listings",
+        "Contact information available",
+        "Industry categorization"
+      ],
+      "challenges": [
+        "Data quality varies",
+        "May have duplicate entries",
+        "Requires respectful scraping"
+      ],
+      "recommended_approach": "Systematic scraping with deduplication",
+      "priority_level": "medium"
+    },
+    "LinkedIn Company Pages": {
+      "accessibility": "accessible",
+      "robots_txt_status": "unknown",
+      "response_time": 0.6663455963134766,
+      "content_structure": "unknown",
+      "estimated_records": 50000,
+      "data_freshness": "unknown",
+      "technical_challenges": [],
+      "opportunities": [
+        "Rich employee and company size data",
+        "Industry classifications",
+        "Company updates and news"
+      ],
+      "challenges": [
+        "Strict API rate limits",
+        "Requires authentication",
+        "Anti-scraping measures"
+      ],
+      "recommended_approach": "Official API with careful rate limit management",
+      "priority_level": "high"
+    },
+    "Facebook Business Pages": {
+      "accessibility": "accessible",
+      "robots_txt_status": "unknown",
+      "response_time": 0.8252425193786621,
+      "content_structure": "unknown",
+      "estimated_records": 25000,
+      "data_freshness": "unknown",
+      "technical_challenges": [],
+      "opportunities": [],
+      "challenges": [],
+      "recommended_approach": "",
+      "priority_level": "medium"
+    },
+    "Crunchbase": {
+      "accessibility": "accessible",
+      "robots_txt_status": "unknown",
+      "response_time": 2.239622116088867,
+      "content_structure": "unknown",
+      "estimated_records": 5000,
+      "data_freshness": "unknown",
+      "technical_challenges": [],
+      "opportunities": [],
+      "challenges": [],
+      "recommended_approach": "",
+      "priority_level": "medium"
+    },
+    "AngelList (Wellfound)": {
+      "accessibility": "accessible",
+      "robots_txt_status": "restricted",
+      "response_time": 0.09449005126953125,
+      "content_structure": {
+        "has_search_functionality": false,
+        "pagination_detected": true,
+        "company_listings_detected": 0,
+        "contact_info_patterns": 3,
+        "structured_data": true,
+        "estimated_scrapability": "medium"
+      },
+      "estimated_records": 3000,
+      "data_freshness": "unknown",
+      "technical_challenges": [],
+      "opportunities": [],
+      "challenges": [],
+      "recommended_approach": "",
+      "priority_level": "medium"
+    },
+    "FinTech Singapore Directory": {
+      "accessibility": "inaccessible",
+      "robots_txt_status": "unknown",
+      "response_time": 0.007254123687744141,
+      "content_structure": "unknown",
+      "estimated_records": 500,
+      "data_freshness": "unknown",
+      "technical_challenges": [
+        "URL not accessible"
+      ],
+      "opportunities": [
+        "Large volume of company listings",
+        "Contact information available",
+        "Industry categorization"
+      ],
+      "challenges": [
+        "Data quality varies",
+        "May have duplicate entries",
+        "Requires respectful scraping"
+      ],
+      "recommended_approach": "Systematic scraping with deduplication",
+      "priority_level": "medium"
+    },
+    "Singapore Manufacturing Federation": {
+      "accessibility": "accessible",
+      "robots_txt_status": "no_robots_txt",
+      "response_time": 0.22522497177124023,
+      "content_structure": {
+        "has_search_functionality": false,
+        "pagination_detected": true,
+        "company_listings_detected": 0,
+        "contact_info_patterns": 3,
+        "structured_data": false,
+        "estimated_scrapability": "low"
+      },
+      "estimated_records": 2000,
+      "data_freshness": "unknown",
+      "technical_challenges": [],
+      "opportunities": [
+        "Large volume of company listings",
+        "Contact information available",
+        "Industry categorization"
+      ],
+      "challenges": [
+        "Data quality varies",
+        "May have duplicate entries",
+        "Requires respectful scraping"
+      ],
+      "recommended_approach": "Systematic scraping with deduplication",
+      "priority_level": "medium"
+    },
+    "Company Websites": {
+      "accessibility": "inaccessible",
+      "robots_txt_status": "unknown",
+      "response_time": 0.0001347064971923828,
+      "content_structure": "unknown",
+      "estimated_records": 200000,
+      "data_freshness": "unknown",
+      "technical_challenges": [
+        "URL not accessible"
+      ],
+      "opportunities": [],
+      "challenges": [],
+      "recommended_approach": "",
+      "priority_level": "medium"
+    }
+  },
+  "market_insights": {
+    "total_estimated_coverage": 976200,
+    "unique_companies_estimate": 292860,
+    "source_type_distribution": {
+      "official": 1,
+      "financial": 3,
+      "procurement": 1,
+      "directory": 5,
+      "social": 2,
+      "primary": 1
+    },
+    "access_method_distribution": {
+      "hybrid": 1,
+      "api": 4,
+      "scraping": 8
+    },
+    "high_reliability_sources": 7,
+    "api_sources_available": 4,
+    "free_sources": 12,
+    "data_coverage_analysis": {
+      "uen": {
+        "sources": 1,
+        "estimated_coverage": 500000,
+        "primary_source": "ACRA Business Registry"
+      },
+      "company_name": {
+        "sources": 3,
+        "estimated_coverage": 650000,
+        "primary_source": "ACRA Business Registry"
+      },
+      "website": {
+        "sources": 2,
+        "estimated_coverage": 300000,
+        "primary_source": "Yellow Pages Singapore"
+      },
+      "industry": {
+        "sources": 2,
+        "estimated_coverage": 550000,
+        "primary_source": "ACRA Business Registry"
+      },
+      "employee_count": {
+        "sources": 1,
+        "estimated_coverage": 50000,
+        "primary_source": "LinkedIn Company Pages"
+      },
+      "contact_info": {
+        "sources": 2,
+        "estimated_coverage": 300000,
+        "primary_source": "Yellow Pages Singapore"
+      },
+      "financial_data": {
+        "sources": 2,
+        "estimated_coverage": 5700,
+        "primary_source": "SGX Listed Companies"
+      },
+      "social_media": {
+        "sources": 2,
+        "estimated_coverage": 75000,
+        "primary_source": "LinkedIn Company Pages"
+      },
+      "products_services": {
+        "sources": 2,
+        "estimated_coverage": 200000,
+        "primary_source": "Company Websites"
+      }
+    },
+    "technical_feasibility": {
+      "scraping_complexity": "Medium - Mix of simple and complex sites",
+      "api_integration_required": true,
+      "rate_limiting_challenges": "Moderate - Most sources require respectful scraping",
+      "anti_bot_measures": "Present on major platforms (LinkedIn, Facebook)",
+      "estimated_development_time": "4-6 weeks for full pipeline",
+      "infrastructure_requirements": "Moderate - Proxy rotation, caching, monitoring"
+    },
+    "legal_compliance_status": {
+      "compliant_sources": 6,
+      "sources_requiring_review": 7,
+      "robots_txt_compliant": 6,
+      "terms_of_service_review_needed": true,
+      "data_protection_considerations": [
+        "PDPA compliance for personal data",
+        "Respect for website terms of service",
+        "Rate limiting to avoid service disruption"
+      ]
+    }
+  },
+  "recommendations": {
+    "primary_strategy": "Multi-source approach with ACRA as primary UEN source",
+    "recommended_extraction_order": [
+      "1. ACRA Business Registry - Get UEN list and basic company data",
+      "2. Company website discovery through directories",
+      "3. Website scraping for detailed company information",
+      "4. Social media enrichment (LinkedIn, Facebook)",
+      "5. Financial data from SGX and Crunchbase",
+      "6. LLM processing for data enrichment"
+    ],
+    "technical_recommendations": [
+      "Implement robust rate limiting and retry mechanisms",
+      "Use proxy rotation for large-scale scraping",
+      "Implement comprehensive caching to avoid re-scraping",
+      "Build modular extractors for each data source",
+      "Implement data quality validation at each step"
+    ],
+    "legal_recommendations": [
+      "Review terms of service for each platform",
+      "Implement robots.txt compliance checking",
+      "Add user-agent identification and contact information",
+      "Implement respectful crawling delays",
+      "Consider reaching out to platforms for partnership opportunities"
+    ],
+    "data_quality_recommendations": [
+      "Use ACRA UEN as primary key for deduplication",
+      "Implement fuzzy matching for company names",
+      "Cross-validate data across multiple sources",
+      "Implement confidence scoring for each data point",
+      "Regular data freshness checks and updates"
+    ]
+  },
+  "estimated_total_coverage": {
+    "conservative_estimate": 50000,
+    "realistic_estimate": 80000,
+    "optimistic_estimate": 120000,
+    "target_for_assessment": 50000,
+    "confidence_level": "High - Multiple reliable sources identified"
+  }
+}
